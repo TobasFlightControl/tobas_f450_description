@@ -1,0 +1,245 @@
+<robot name="f450">
+
+  <!-- Material -->
+  <material name="black">
+    <texture/>
+    <color rgba="0 0 0 1"/>
+  </material>
+  <material name="white">
+    <texture/>
+    <color rgba="1 1 1 1"/>
+  </material>
+  <material name="red">
+    <texture/>
+    <color rgba="1 0 0 1"/>
+  </material>
+  <material name="yellow">
+    <texture/>
+    <color rgba="1 1 0 1"/>
+  </material>
+
+  <!-- Base Link (Empty) -->
+  <link name="base_link"/>
+
+  <!-- Battery -->
+  <joint name="battery_joint" type="fixed">
+    <origin xyz="0 0 -0.025" rpy="0 -0 0"/>
+    <axis xyz="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="battery"/>
+  </joint>
+  <link name="battery">
+    <inertial>
+      <mass value="0.376"/>
+      <origin xyz="0 0 0" rpy="0 -0 0"/>
+      <inertia ixx="9.024e-05" ixy="0" ixz="0" iyy="0.000770831" iyz="0" izz="0.000824975"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 -0 0"/>
+      <geometry>
+        <box size="0.155 0.048 0.024"/>
+      </geometry>
+      <material name="yellow">
+        <texture/>
+        <color rgba="1 1 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 -0 0"/>
+      <geometry>
+        <box size="0.155 0.048 0.024"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Flight Management Unit -->
+  <joint name="fmu_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 -0 0"/>
+    <axis xyz="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="fmu"/>
+  </joint>
+  <link name="fmu">
+    <inertial>
+      <mass value="0.16"/>
+      <origin xyz="0 0 0.014" rpy="0 -0 0"/>
+      <inertia ixx="6.17067e-05" ixy="0" ixz="0" iyy="0.000118453" iyz="0" izz="0.000159253"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 -0 0"/>
+      <geometry>
+        <mesh filename="package://tobas_f450_description/meshes/tobas_t100.stl" scale="1 1 1"/>
+      </geometry>
+      <material name="red">
+        <texture/>
+        <color rgba="1 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.014" rpy="0 -0 0"/>
+      <geometry>
+        <box size="0.09 0.062 0.028"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Main Frame -->
+  <joint name="frame_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 -0 0"/>
+    <axis xyz="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="frame"/>
+  </joint>
+  <link name="frame">
+    <inertial>
+      <mass value="0.55346"/>
+      <origin xyz="0 0 -0.004136" rpy="0 -0 0"/>
+      <inertia ixx="0.008128" ixy="0" ixz="0" iyy="0.008193" iyz="0" izz="0.01597"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 -0 0"/>
+      <geometry>
+        <mesh filename="package://tobas_f450_description/meshes/frame.stl" scale="1 1 1"/>
+      </geometry>
+      <material name="black">
+        <texture/>
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 -0.03" rpy="0 -0 0"/>
+      <geometry>
+        <box size="0.35 0.35 0.06"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Propeller (0) -->
+  <joint name="propeller_0_joint" type="thrust">
+    <origin xyz="0.159099 -0.159099 0.0247" rpy="0 0 -0.785398"/>
+    <axis xyz="0 0 1"/>
+    <parent link="base_link"/>
+    <child link="propeller_0"/>
+    <direction value="ccw"/>
+  </joint>
+  <link name="propeller_0">
+    <inertial>
+      <mass value="0.011"/>
+      <origin xyz="0 0 0.006" rpy="0 -0 0"/>
+      <inertia ixx="3.9732e-05" ixy="0" ixz="0" iyy="3.9732e-05" iyz="0" izz="7.92e-05"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 -0 0"/>
+      <geometry>
+        <mesh filename="package://tobas_f450_description/meshes/phantom3_0945_ccw.stl" scale="1 1 1"/>
+      </geometry>
+      <material name="white">
+        <texture/>
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.006" rpy="0 -0 0"/>
+      <geometry>
+        <cylinder radius="0.12" length="0.012"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Propeller (1) -->
+  <joint name="propeller_1_joint" type="thrust">
+    <origin xyz="-0.159099 0.159099 0.0247" rpy="0 -0 2.35619"/>
+    <axis xyz="0 0 1"/>
+    <parent link="base_link"/>
+    <child link="propeller_1"/>
+    <direction value="ccw"/>
+  </joint>
+  <link name="propeller_1">
+    <inertial>
+      <mass value="0.011"/>
+      <origin xyz="0 0 0.006" rpy="0 -0 0"/>
+      <inertia ixx="3.9732e-05" ixy="0" ixz="0" iyy="3.9732e-05" iyz="0" izz="7.92e-05"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 -0 0"/>
+      <geometry>
+        <mesh filename="package://tobas_f450_description/meshes/phantom3_0945_ccw.stl" scale="1 1 1"/>
+      </geometry>
+      <material name="white">
+        <texture/>
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.006" rpy="0 -0 0"/>
+      <geometry>
+        <cylinder radius="0.12" length="0.012"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Propeller (2) -->
+  <joint name="propeller_2_joint" type="thrust">
+    <origin xyz="0.159099 0.159099 0.0247" rpy="0 -0 0.785398"/>
+    <axis xyz="0 0 1"/>
+    <parent link="base_link"/>
+    <child link="propeller_2"/>
+    <direction value="cw"/>
+  </joint>
+  <link name="propeller_2">
+    <inertial>
+      <mass value="0.011"/>
+      <origin xyz="0 0 0.006" rpy="0 -0 0"/>
+      <inertia ixx="3.9732e-05" ixy="0" ixz="0" iyy="3.9732e-05" iyz="0" izz="7.92e-05"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 -0 0"/>
+      <geometry>
+        <mesh filename="package://tobas_f450_description/meshes/phantom3_0945_cw.stl" scale="1 1 1"/>
+      </geometry>
+      <material name="white">
+        <texture/>
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.006" rpy="0 -0 0"/>
+      <geometry>
+        <cylinder radius="0.12" length="0.012"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Propeller (3) -->
+  <joint name="propeller_3_joint" type="thrust">
+    <origin xyz="-0.159099 -0.159099 0.0247" rpy="0 0 -2.35619"/>
+    <axis xyz="0 0 1"/>
+    <parent link="base_link"/>
+    <child link="propeller_3"/>
+    <direction value="cw"/>
+  </joint>
+  <link name="propeller_3">
+    <inertial>
+      <mass value="0.011"/>
+      <origin xyz="0 0 0.006" rpy="0 -0 0"/>
+      <inertia ixx="3.9732e-05" ixy="0" ixz="0" iyy="3.9732e-05" iyz="0" izz="7.92e-05"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 -0 0"/>
+      <geometry>
+        <mesh filename="package://tobas_f450_description/meshes/phantom3_0945_cw.stl" scale="1 1 1"/>
+      </geometry>
+      <material name="white">
+        <texture/>
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.006" rpy="0 -0 0"/>
+      <geometry>
+        <cylinder radius="0.12" length="0.012"/>
+      </geometry>
+    </collision>
+  </link>
+
+</robot>

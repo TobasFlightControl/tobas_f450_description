@@ -1,0 +1,15 @@
+<package format="3">
+
+	<name>tobas_f450_description</name>
+	<version>0.0.0</version>
+	<description>Example of a UADF for DJI F450.</description>
+	<maintainer email="m.dohi@tobas.jp">Masayoshi Dohi</maintainer>
+	<license>MIT</license>
+
+	<buildtool_depend>ament_cmake</buildtool_depend>
+
+	<export>
+		<build_type>ament_cmake</build_type>
+	</export>
+
+</package>
