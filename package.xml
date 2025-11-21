@@ -2,7 +2,7 @@
 
 	<name>tobas_f450_description</name>
 	<version>0.0.0</version>
-	<description>Example of a UADF for DJI F450.</description>
+	<description>A UADF example for the DJI F450.</description>
 	<maintainer email="m.dohi@tobas.jp">Masayoshi Dohi</maintainer>
 	<license>MIT</license>
 

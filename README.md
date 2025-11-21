@@ -1,3 +1,3 @@
 # tobas_f450_description
 
-Example of a UADF for DJI F450.
+A UADF example for the DJI F450.
